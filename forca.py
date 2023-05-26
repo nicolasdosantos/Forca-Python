@@ -86,6 +86,12 @@ def tentativa(tentativas_de_letras,palavra_escolhida, letra, chanche):
         pass
     return tentativas_de_letras,chanche
 
+#DESENHO DA PALAVRA CAMUFLADA
+
+def palavra_jogo(window, palavra_camuflada):
+    palavra = font.render(palavra_camuflada, True, preto)
+    window.blit(palavra,(200,500))
+
 while True:
     for event in pg.event.get():
         if event.type == pg.QUIT:
@@ -101,5 +107,5 @@ while True:
     palavra_escolhida, end_game = sorteio(palavras, palavra_escolhida, end_game)
     palavra_camuflada = camuflar(palavra_escolhida, palavra_camuflada, tentativas_de_letras)
     tentativas_de_letras,chanche = tentativa(tentativas_de_letras,palavra_escolhida, letra, chanche)
-    print(palavra_escolhida, palavra_camuflada)
+    palavra_jogo(window, palavra_camuflada)
     pg.display.update()
