@@ -1,13 +1,4 @@
 from palavraforca import palavra
-import pygame as pg
-import random
-
-#Cores para usar no jogo
-branco = (255,255,255)
-preto = (0,0,0)
-
-#Setup da tela do jogo
-Window = pg.display.set_mode((1000,600))
 letras_usuario =[]
 chanches = 5
 ganhou = False
@@ -29,7 +20,6 @@ while True:
     for letra in palavra:
         if letra.lower() not in letras_usuario:
             ganhou = False
-
 
     if chanches == 0 or ganhou:
         break
