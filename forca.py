@@ -29,6 +29,7 @@ end_game = True
 chanches = 0
 letra = ''
 click_last_status = False
+ganhou = False
 
 #FUNCTION PARA DESENHAR
 def Desenho_da_forca(window, chanches):
