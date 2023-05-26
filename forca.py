@@ -86,11 +86,28 @@ def tentativa(tentativas_de_letras,palavra_escolhida, letra, chanche):
         pass
     return tentativas_de_letras,chanche
 
-#DESENHO DA PALAVRA CAMUFLADA
-
+#DESENHO DA PALAVRA
 def palavra_jogo(window, palavra_camuflada):
     palavra = font.render(palavra_camuflada, True, preto)
     window.blit(palavra,(200,500))
+
+#BOTÃO DE RESTART
+
+def resetar(palavra_camuflada,end_game, chanches, letra, tentativas_de_letras,click_last_status,click,x,y):
+    count = 0
+    limite = len(palavra_camuflada)
+    for n in range(len(palavra_camuflada)):
+        if palavra_camuflada[n] != "_":
+            count += 1
+    if count == limite and click_last_status == False and click [0 == True]:
+        if x >= 700 and x <= 900 and y >= 100 and y <= 165:
+            tentativas_de_letras = ['','-']
+            end_game = True
+            chanches = 0
+            letra = ''
+    return end_game,chanches,tentativas_de_letras,letra
+
+
 
 while True:
     for event in pg.event.get():
@@ -100,12 +117,27 @@ while True:
         if event.type == pg.KEYDOWN:
             letra = str(pg.key.name(event.key)).upper()
             print(letra)
+    
+    #DECLARANDO A POSIÇÃO DO MOUSEO
+    mouse = pg.mouse.get_pos()
+    mouse_position_x = mouse[0]
+    mouse_position_y = mouse[1]
+
+    #VARIAVEL DO CLICK DO MOUSE
+    click = pg.mouse.get_pressed()
 
     #FUCTION JOGO
-    Desenho_da_forca(window, 6)
+    Desenho_da_forca(window, chanches)
     Desenho_Resetart_Button(window)
     palavra_escolhida, end_game = sorteio(palavras, palavra_escolhida, end_game)
     palavra_camuflada = camuflar(palavra_escolhida, palavra_camuflada, tentativas_de_letras)
-    tentativas_de_letras,chanche = tentativa(tentativas_de_letras,palavra_escolhida, letra, chanche)
+    tentativas_de_letras,chanches = tentativa(tentativas_de_letras,palavra_escolhida, letra, chanches)
     palavra_jogo(window, palavra_camuflada)
+    end_game,chanches,tentativas_de_letras,letra = resetar(palavra_camuflada,end_game, chanches, letra, tentativas_de_letras,click_last_status,click,mouse_position_x,mouse_position_y)
+
+    #CLICK 
+    if click[0] == True:
+        click_last_status = True
+    else:
+        click_last_status = False
     pg.display.update()
