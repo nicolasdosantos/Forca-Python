@@ -8,7 +8,7 @@ preto = (0,0,0)
 #Setup da tela do jogo
 window = pg.display.set_mode((1000,600))
 
-# Iniciando a fonto da forca
+#Iniciando a fonto da forca
 pg.font.init()
 #Fonte e tamanho
 font = pg.font.SysFont('Courier New', 50)
@@ -18,7 +18,10 @@ palavras = [
     "SISTEMA",
     "TECNOLOGIA",
     "COMPUTADOR",
-    "SITE"
+    "SITE",
+    "PROGRAMAÇÃO",
+    "DESENVOLVEDOR",
+    "FIGMA"
 ]
 
 #Variaveis
@@ -110,6 +113,8 @@ def resetar(palavra_camuflada,end_game, chanches, letra, tentativas_de_letras,cl
 
 
 
+
+
 while True:
     for event in pg.event.get():
         if event.type == pg.QUIT:
@@ -142,3 +147,4 @@ while True:
     else:
         click_last_status = False
     pg.display.update()
+
