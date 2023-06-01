@@ -124,13 +124,7 @@ while True:
         if event.type == pg.KEYDOWN:
             letra = str(pg.key.name(event.key)).upper()
             print(letra)
-    
-    # ganhou = False
-    # for letra in palavra_escolhida:
-    #     if letra.lower() not in tentativas_de_letras:
-    #         ganhou = True
-    # if chanches == 5 or ganhou:
-    #     break
+
     #DECLARANDO A POSIÇÃO DO MOUSEO
     mouse = pg.mouse.get_pos()
     mouse_position_x = mouse[0]
@@ -155,4 +149,3 @@ while True:
         click_last_status = False
     pg.display.update()
 
-    
