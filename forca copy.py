@@ -32,7 +32,7 @@ end_game = True
 chanches = 0
 letra = ''
 click_last_status = False
-ganhou = False
+ganhou = True
 
 #FUNCTION PARA DESENHAR
 def Desenho_da_forca(window, chanches):
@@ -116,7 +116,7 @@ def resetar(palavra_camuflada,end_game, chanches, letra, tentativas_de_letras,cl
 
 
 
-while True:
+while ganhou:
     for event in pg.event.get():
         if event.type == pg.QUIT:
             pg.quit()
@@ -124,6 +124,11 @@ while True:
         if event.type == pg.KEYDOWN:
             letra = str(pg.key.name(event.key)).upper()
             print(letra)
+        if event.type == pg.K_ESCAPE:
+            ganhou = False 
+        elif event.type == QUIT:
+            ganhou = False 
+
     
     # ganhou = False
     # for letra in palavra_escolhida:
