@@ -54,7 +54,7 @@ def restart_game():
     pontos = 0
     text_ponto.update_text(str(pontos))
 
-#Clico do jogo 
+#Clico do jogo / Pontos / Morte / Comandos
 while True:
     pygame.time.Clock().tick(15)
     screen.fill((0, 0, 0))
