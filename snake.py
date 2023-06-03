@@ -1,6 +1,7 @@
 import pygame
 from pygame.locals import *
 import random
+from text import Text
 
 WINDOW_SIZE = (600, 600)
 PIXEL_SIZE = 10
@@ -27,6 +28,9 @@ snake_pos = [(250, 50), (260, 50), (270, 50)]
 snake_surface = pygame.Surface((PIXEL_SIZE, PIXEL_SIZE))
 snake_surface.fill((255, 255, 255))
 snake_direction = K_LEFT
+pontos = 0
+
+text_ponto = Text("ShareTechMono-Regular.ttf", 25, str(pontos),(255, 255, 255), [10,10])
 
 apple_surface = pygame.Surface((PIXEL_SIZE, PIXEL_SIZE))
 apple_surface.fill((255, 0, 0))
@@ -39,6 +43,9 @@ def restart_game():
     snake_pos = [(250, 50), (260, 50), (270, 50)]
     snake_direction = K_LEFT
     apple_pos = random_on_grid()
+    global pontos
+    pontos = 0
+    text_ponto.update_text(str(pontos))
 
 while True:
     pygame.time.Clock().tick(15)
@@ -52,10 +59,13 @@ while True:
                 snake_direction = event.key
 
     screen.blit(apple_surface, apple_pos)
+    text_ponto.drawFade()
 
     if collision(apple_pos, snake_pos[0]):
         snake_pos.append((-10, -10))
         apple_pos = random_on_grid()
+        pontos += 1
+        text_ponto.update_text(str(pontos))
 
     for pos in snake_pos:
         screen.blit(snake_surface, pos)
